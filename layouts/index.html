@@ -1,0 +1,51 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="marquee-track marquee-track--slow">
+      <span class="marquee-content marquee-content--ghost">ENGINEERING JOURNAL — PROBLEMS — SOLUTIONS — LEARNINGS —&nbsp;</span>
+      <span class="marquee-content marquee-content--ghost">ENGINEERING JOURNAL — PROBLEMS — SOLUTIONS — LEARNINGS —&nbsp;</span>
+      <span class="marquee-content marquee-content--ghost">ENGINEERING JOURNAL — PROBLEMS — SOLUTIONS — LEARNINGS —&nbsp;</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">ENGINEERING<br>JOURNAL</h1>
+    <p class="hero-subtitle">Problems encountered. Decisions made. Commands explained.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">{{ len (where .Site.RegularPages "Section" "posts") }}</span>
+        <span class="stat-label">ENTRIES</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">{{ len .Site.Taxonomies.tags }}</span>
+        <span class="stat-label">TAGS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="entries-section">
+  <div class="section-header">
+    <h2 class="section-title">ALL ENTRIES</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="entries-list">
+    {{ range (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}
+    <a href="{{ .RelPermalink }}" class="entry-card">
+      <div class="entry-card-inner">
+        <div class="entry-index" aria-hidden="true">{{ printf "%02d" .Weight }}</div>
+        <div class="entry-meta">
+          <time class="entry-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006 / 01 / 02" }}</time>
+          <div class="entry-tags">
+            {{ range .Params.tags }}<span class="entry-tag">{{ . }}</span>{{ end }}
+          </div>
+        </div>
+        <h3 class="entry-title">{{ .Title }}</h3>
+        <p class="entry-summary">{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}</p>
+        <span class="entry-read">READ ENTRY →</span>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

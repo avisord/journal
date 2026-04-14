@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ .Site.BaseURL }}" class="site-logo">
+      <span class="logo-text">JOURNAL</span>
+      <span class="logo-dot"></span>
+    </a>
+    <nav class="site-nav">
+      <a href="{{ .Site.BaseURL }}" class="nav-link{{ if .IsHome }} nav-link--active{{ end }}">ENTRIES</a>
+      <a href="{{ "tags/" | absURL }}" class="nav-link">TAGS</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,38 @@
+{{ define "main" }}
+<section class="list-page">
+  <div class="list-header">
+    <h1 class="list-title">{{ .Title | upper }}</h1>
+    {{ with .Data.Singular }}
+    <p class="list-count">{{ len $.Pages }} {{ if eq (len $.Pages) 1 }}ENTRY{{ else }}ENTRIES{{ end }}</p>
+    {{ end }}
+    <div class="section-line"></div>
+  </div>
+
+  {{ if .Data.Singular }}
+  {{/* Taxonomy term page (e.g., /tags/docker/) */}}
+  <div class="entries-list">
+    {{ range .Pages.ByDate.Reverse }}
+    <a href="{{ .RelPermalink }}" class="entry-card">
+      <div class="entry-card-inner">
+        <div class="entry-meta">
+          <time class="entry-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006 / 01 / 02" }}</time>
+        </div>
+        <h3 class="entry-title">{{ .Title }}</h3>
+        <span class="entry-read">READ ENTRY →</span>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+  {{ else }}
+  {{/* Taxonomy list page (e.g., /tags/) */}}
+  <div class="tag-cloud">
+    {{ range .Data.Terms.Alphabetical }}
+    <a href="{{ .Page.RelPermalink }}" class="tag-item">
+      <span class="tag-name">{{ .Page.Title | upper }}</span>
+      <span class="tag-count">{{ .Count }}</span>
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+</section>
+{{ end }}

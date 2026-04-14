@@ -1,18 +1,17 @@
 baseURL = "https://avisord.github.io/journal/"
 languageCode = "en-us"
 title = "Avinash's Engineering Journal"
-theme = "PaperMod"
 
 [params]
-  ShowReadingTime = true
-  ShowCodeCopyButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  defaultTheme = "dark"
+  description = "Problems encountered. Decisions made. Commands explained."
 
 [markup]
   [markup.highlight]
-    style = "monokai"
+    style = "native"
     lineNos = false
     codeFences = true
     guessSyntax = true
+    noClasses = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
