@@ -54,5 +54,3 @@ Table of concepts referenced in the entry.
 
 - **Name**: Avinash Kumar
 - **Machine**: Arch Linux, 16GB RAM, 32GB root (`/dev/sda2`), 78GB home (`/dev/sda3`), 476GB NVMe SSD (`/dev/nvme0n1`)
-- **Dev stack**: NestJS, TypeORM, PostgreSQL, Elasticsearch, Docker, pnpm
-- **Primary project**: ListIT (classified-ads platform) at `/home/a/projects/think-interaction/ListIT`
