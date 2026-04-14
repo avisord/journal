@@ -1,8 +1,7 @@
-# Docker Data Root Migration to External Disk
-
-- **date**: 2026-04-14
-- **tags**: docker, elasticsearch, disk, ntfs, ext4, loop-mount
-
+---
+title: "Docker Data Root Migration to External Disk"
+date: 2026-04-14
+tags: [docker, elasticsearch, disk, ntfs, ext4, loop-mount]
 ---
 
 ## Problem

@@ -2,30 +2,39 @@
 
 A personal engineering journal for documenting problems, solutions, and learnings.
 
-## Purpose
+## Hugo Static Site
 
-This repo stores structured troubleshooting notes and decision logs. Each entry documents a real problem encountered during development, the options considered, the chosen solution, and command-by-command explanations.
+This repo is a Hugo site using the PaperMod theme, deployed to GitHub Pages via GitHub Actions.
 
-## File Naming Convention
+- **Local dev**: `hugo server -D` → `http://localhost:1313/journal/`
+- **Production**: `https://avisord.github.io/journal/`
+- **Theme**: PaperMod (git submodule in `themes/PaperMod/`)
 
+## Creating New Entries
+
+```bash
+hugo new posts/<YYYY-MM-DD>-<short-kebab-description>.md
 ```
-<YYYY-MM-DD>-<short-kebab-description>.md
+
+This uses the archetype at `archetypes/posts.md`. Remove `draft: true` when ready to publish.
+
+## Entry Format
+
+All entries live in `content/posts/` and must have YAML frontmatter:
+
+```yaml
+---
+title: "Descriptive Title"
+date: YYYY-MM-DD
+tags: [tag1, tag2, tag3]
+---
 ```
 
-Example: `2026-04-14-docker-disk-migration.md`
+Do NOT use a `# Title` heading in the body — Hugo renders the title from frontmatter.
 
 ## Entry Structure
 
-Every journal entry should follow this format:
-
 ```markdown
-# Title
-
-- **date**: YYYY-MM-DD
-- **tags**: comma-separated keywords
-
----
-
 ## Problem
 What went wrong and why.
 
@@ -44,7 +53,6 @@ Table of concepts referenced in the entry.
 
 ## Writing Guidelines
 
-- Write entries so they can be parsed programmatically (consistent headings, frontmatter-style metadata).
 - Explain every command and flag — this journal serves as a learning reference.
 - Include actual outputs/values where relevant (UUIDs, paths, sizes).
 - Add a disk/architecture diagram when the solution involves infrastructure changes.
