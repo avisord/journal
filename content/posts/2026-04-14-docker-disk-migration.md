@@ -1,8 +1,18 @@
 ---
-title: "Docker Data Root Migration to External Disk"
-date: 2026-04-14
-tags: [docker, elasticsearch, disk, ntfs, ext4, loop-mount]
-summary: "Elasticsearch hit the flood-stage disk watermark on a 32GB root partition. Solved by creating a loop-mounted ext4 image on an NTFS NVMe drive to relocate Docker's data-root."
+title: Docker Data Root Migration to External Disk
+date: '2026-04-14'
+tags:
+  - docker
+  - elasticsearch
+  - disk
+  - ntfs
+  - ext4
+  - loop-mount
+summary: >-
+  Elasticsearch hit the flood-stage disk watermark on a 32GB root partition.
+  Solved by creating a loop-mounted ext4 image on an NTFS NVMe drive to relocate
+  Docker's data-root.
+draft: false
 ---
 
 ## Problem
@@ -148,3 +158,5 @@ sudo rm -rf /var/lib/docker
 /dev/nvme0n1p2 (476G, NTFS)    -> mounted at /mnt/nvme (Windows files preserved)
   └── docker.img (100G, ext4)  -> loop-mounted at /mnt/docker (Docker data-root)
 ```
+
+written on: 4 . 14 . 2026
