@@ -159,4 +159,4 @@ sudo rm -rf /var/lib/docker
   └── docker.img (100G, ext4)  -> loop-mounted at /mnt/docker (Docker data-root)
 ```
 
-written on: 4 . 14 . 2026
+written on: 4 . 14 . 2026 xyz
